@@ -22,28 +22,26 @@ class GildedRose {
                     break;
                 case self::BACKSTAGE:
         
-                    $item->decreaseQuality();
-                    $item->decreaseSellIn();
-                    if ($item->sell_in < 0) {
-                        $item->decreaseQuality();
-                    }
-
                     $item->increaseQuality();
                     if ($item->sell_in < 11) {
-                        if ($item->quality < 50) {
+                        if ($item->sell_in < 50) {
                             $item->increaseQuality();
                         }
                     }
                     if ($item->sell_in < 6) {
-                        if ($item->quality < 50) {
+                        if ($item->sell_in < 50) {
                             $item->increaseQuality();
                         }
                     }
+                    
+                    $item->sell_in = $item->sell_in - 1;
                     if ($item->sell_in < 0) {
                         if ($item->quality < 50) {
                             $item->increaseQuality();
                         }
+                        $item->quality = 0;
                     }
+
                     break;
                 case self::AGED:
                     if ($item->quality < 50) {
