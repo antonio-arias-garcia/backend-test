@@ -18,4 +18,20 @@ class Item {
         return "{$this->name}, {$this->sell_in}, {$this->quality}";
     }
 
+    public function decreaseQuality()
+    {
+        if ($this->quality > 0) {
+            $this->quality = $this->quality - 1;
+        }
+    }
+    public function decreaseSellIn()
+    {
+        $this->sell_in =  $this->sell_in - 1;
+    }
+
+    public function increaseQuality()
+    {
+        $this->quality = $this->quality + 1;
+    }
+
 }
